@@ -1,7 +1,7 @@
 
 # User Management System
 User management system is an application to manage user data. Database used is MongoDB .
-
+Use env variables based on .env.sample file.
 
 ##  API CALLS
 
