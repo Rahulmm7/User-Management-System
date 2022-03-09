@@ -4,7 +4,12 @@ const User = require('../model/user');
 const client = require('../utils/redis');
 const validation = require('../validation');
 
-// create  a user
+/**
+ * Function for user registration
+ * @param {JSON} req request a JSON object containing user details for registration
+ * @param {JSON} res response a JSON object containing message and JWT token
+ * @returns message and token indicating user signup
+ */
 
 exports.create = async (req, res) => {
     try {
@@ -23,7 +28,11 @@ exports.create = async (req, res) => {
     }
 };
 
-// login page
+/**
+ * Funtion for login of registered user
+ * @param {JSON} req request a JSON object containing email and password to login
+ * @param {JSON} res response a JSON object with message and JWT token
+ */
 
 exports.login = async (req, res) => {
     try {
@@ -43,7 +52,11 @@ exports.login = async (req, res) => {
     }
 };
 
-// user email verify page
+/**
+ * Funtion for user email verify
+ * @param {JSON} req request a JSON object containing email and otp to verify
+ * @param {JSON} res response a JSON object with message
+ */
 exports.user_emailVerify = async (req, res) => {
     const validateResult = await validation.emailVerifySchema.validateAsync(req.body);
     const { email, otp } = validateResult;
@@ -73,7 +86,11 @@ exports.user_emailVerify = async (req, res) => {
     }
 };
 
-// user Phone number  verify page
+/**
+ * Funtion for user Phone number  verify
+ * @param {JSON} req request a JSON object containing email,number and otp to verify
+ * @param {JSON} res response a JSON object with message
+ */
 exports.user_PhoneVerify = async (req, res) => {
     const validateResult = await validation.phoneVerifySchema.validateAsync(req.body);
     const { email, number, otp } = validateResult;
@@ -105,7 +122,11 @@ exports.user_PhoneVerify = async (req, res) => {
     }
 };
 
-// forgot password page
+/**
+ * Funtion for forgot password
+ * @param {JSON} req request a JSON object containing email
+ * @param {JSON} res response a JSON object with message
+ */
 
 exports.forgotPassword = async (req, res) => {
     try {
@@ -121,7 +142,11 @@ exports.forgotPassword = async (req, res) => {
     }
 };
 
-// reset password
+/**
+ * Funtion for reset password
+ * @param {JSON} req request a JSON object containing email, otp, new password and confirm password
+ * @param {JSON} res response a JSON object with message
+ */
 
 exports.resetPassword = async (req, res) => {
     try {

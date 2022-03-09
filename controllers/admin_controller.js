@@ -2,7 +2,11 @@ const admin_service = require('../services/admin_services');
 const responseFile = require('../response');
 const validation = require('../validation');
 
-// admin login page
+/**
+ * Funtion for login of registered admin
+ * @param {JSON} req request a JSON object containing email and password to login
+ * @param {JSON} res response a JSON object with message and JWT token
+ */
 
 exports.adminLogin = async (req, res) => {
     try {
@@ -21,7 +25,11 @@ exports.adminLogin = async (req, res) => {
     }
 };
 
-// admin page to view all users details page
+/**
+ * function to get all Users in database
+ * @param {Json} req null or JSON object containg status of user
+ * @param {JSON} res a response as JSON object with all users in the database
+ */
 
 exports.getUserData = async (req, res) => {
     try {
@@ -31,7 +39,11 @@ exports.getUserData = async (req, res) => {
     }
 };
 
-// admin page to update user status
+/**
+ * function to update user status
+ * @param {Json} req JSON object containg email and status of user
+ * @param {JSON} res a response as JSON object with message.
+ */
 
 exports.updateUserStatus = async (req, res) => {
     try {
@@ -48,7 +60,11 @@ exports.updateUserStatus = async (req, res) => {
     }
 };
 
-// admin page to user hard delete
+/**
+ * function to user hard delete
+ * @param {Json} req user id through url
+ * @param {JSON} res a response as JSON object with message.
+ */
 
 exports.userdelete = async (req, res) => {
     try {
@@ -64,8 +80,11 @@ exports.userdelete = async (req, res) => {
     }
 };
 
-// admin page to user soft delete
-
+/**
+ * function to user soft delete
+ * @param {Json} req JSON object containg email of user
+ * @param {JSON} res a response as JSON object with message.
+ */
 exports.userSoftdelete = async (req, res) => {
     try {
         const response = await admin_service.user_softdelete(req, res);
