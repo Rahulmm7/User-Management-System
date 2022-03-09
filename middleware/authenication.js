@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const responseFile = require('../response');
+const responseFile = require('../utils/response');
 
 const jwthashstring = process.env.JWTSTRING;
 

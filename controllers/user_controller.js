@@ -1,5 +1,5 @@
 const User_service = require('../services/user_services');
-const responseFile = require('../response');
+const responseFile = require('../utils/response');
 const User = require('../model/user');
 const client = require('../utils/redis');
 const validation = require('../validation');

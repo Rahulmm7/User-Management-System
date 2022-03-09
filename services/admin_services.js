@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const responseFile = require('../response');
+const responseFile = require('../utils/response');
 const User = require('../model/user');
 
 // admin login page

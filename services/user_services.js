@@ -1,11 +1,12 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const hash = require('hash.js');
 const User = require('../model/user');
 const client = require('../utils/redis');
 const otp = require('../utils/otp');
 const mailer = require('../utils/email');
 const sms = require('../utils/twillio');
-const responseFile = require('../response');
+const responseFile = require('../utils/response');
 
 // db querry to create new user / registration
 exports.user_create = async (req, res) => {
@@ -17,9 +18,12 @@ exports.user_create = async (req, res) => {
         const userExist = await User.findOne({ email });
         if (userExist) { return responseFile.errorResponse(res, 'User Already Exist', 403); }
 
-        // password hashing
+        // password hashing using bcrypt
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
+
+        // password hashing using sha256
+        // const hashedPassword = hash.sha256().update(password).digest('hex');
 
         const newUser = new User(
             {

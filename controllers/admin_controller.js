@@ -1,5 +1,5 @@
 const admin_service = require('../services/admin_services');
-const responseFile = require('../response');
+const responseFile = require('../utils/response');
 const validation = require('../validation');
 
 /**
